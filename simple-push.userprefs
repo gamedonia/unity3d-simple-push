@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/Gamedonia/GamedoniaScripts.cs">
+    <Files>
+      <File FileName="../simple-login/Assets/Samples/Login/Scripts/Login.cs" Line="27" Column="32" />
+      <File FileName="../simple-login/Assets/Plugins/Gamedonia/Facebook/FacebookManager.cs" Line="1" Column="1" />
+      <File FileName="../simple-login/Assets/Plugins/Gamedonia/Facebook/FacebookBinding.cs" Line="203" Column="47" />
+      <File FileName="Assets/Samples/Push/Scripts/Push.cs" Line="70" Column="15" />
+      <File FileName="Assets/Plugins/Gamedonia/GamedoniaUsers.cs" Line="62" Column="6" />
+      <File FileName="Assets/Plugins/Gamedonia/GamedoniaScripts.cs" Line="30" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
