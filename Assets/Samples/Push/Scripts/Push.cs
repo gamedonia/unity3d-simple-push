@@ -12,7 +12,7 @@ public class Push : MonoBehaviour {
 
 	public Texture2D backgroundImg;
 	public GUISkin skin;
-	
+
 
 	private string errorMsg = "";
 	private string statusMsg = "";
@@ -24,9 +24,19 @@ public class Push : MonoBehaviour {
 
 	void Start() {
 
+
+		if (  Gamedonia.INSTANCE== null) {
+
+			statusMsg = "Missing Api Key/Secret. Check the README.txt for more info.";
+			return;
+		}
+		else if (GamedoniaPushNotifications.Instance.androidSenderId == "") {
+			Debug.Log ("Missing Android Sender Id, push notifications won't work for Android. Check the README.txt for more info.");
+		}
+
 		GamedoniaUsers.Authenticate(OnLogin);
 		printToConsole ("Starting session with Gamedonia...");
-		
+
 		//Handle push
 		GDPushService pushService = new GDPushService();
 		pushService.RegisterEvent += new RegisterEventHandler(OnNotification);
@@ -35,7 +45,7 @@ public class Push : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		
+
 		GUI.skin = skin;
 
 		GUI.DrawTexture(UtilResize.ResizeGUI(new Rect(0,0,320,480)),backgroundImg);
@@ -71,11 +81,19 @@ public class Push : MonoBehaviour {
 		    delegate (bool success, object data) {
 				if (success) {
 					printToConsole("Push requested successfully");
+					checkEditor ();
 				}else {
 					printToConsole("Failed request for server push");
 				}
-			}         
+			}
 		);
+	}
+
+	private void checkEditor() {
+
+		if (Application.isEditor) {
+			statusMsg = "Push notifications can only be received in a device. Not in Editor mode.";
+		}
 	}
 
 	private void printToConsole(string msg) {
@@ -86,7 +104,7 @@ public class Push : MonoBehaviour {
 
 		statusMsg = "";
 		if (success) {
-			printToConsole("Session started successfully. uid: " + GamedoniaUsers.me._id);		
+			printToConsole("Session started successfully. uid: " + GamedoniaUsers.me._id);
 		}else {
 			errorMsg = Gamedonia.getLastError().ToString();
 			Debug.Log(errorMsg);
