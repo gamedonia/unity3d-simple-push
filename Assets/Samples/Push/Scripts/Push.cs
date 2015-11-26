@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Text;
 using System;
 using LitJson_Gamedonia;
+using Gamedonia.Backend;
 
 
 public class Push : MonoBehaviour {
@@ -25,7 +26,7 @@ public class Push : MonoBehaviour {
 	void Start() {
 
 
-		if (  Gamedonia.INSTANCE== null) {
+		if (  GamedoniaBackend.INSTANCE== null) {
 
 			statusMsg = "Missing Api Key/Secret. Check the README.txt for more info.";
 			return;
@@ -106,7 +107,7 @@ public class Push : MonoBehaviour {
 		if (success) {
 			printToConsole("Session started successfully. uid: " + GamedoniaUsers.me._id);
 		}else {
-			errorMsg = Gamedonia.getLastError().ToString();
+			errorMsg = GamedoniaBackend.getLastError().ToString();
 			Debug.Log(errorMsg);
 		}
 
